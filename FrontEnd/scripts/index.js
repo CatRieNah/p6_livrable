@@ -86,3 +86,26 @@ async function displayCategories() {
     })
 }
 displayCategories()
+
+//Filtrage des travaux 
+async function filterWorks() {
+    const works = await getWorks()
+    const categories = await getCategories()
+    const listFilters = document.querySelectorAll("#portfolio li")
+    listFilters.forEach(filter => {
+        filter.addEventListener("click",(event)=>{
+            gallery.innerHTML = ""
+            const idFilter= event.target.id
+            if(idFilter === 'All'){
+                displayWorksInGallery()
+            }else{
+                const filteredWorks = works.filter((work => idFilter == work.category.id))
+                filteredWorks.forEach(work => {
+                    const figure = createFigureGallery(work)
+                    gallery.appendChild(figure)
+                })
+            }
+        })
+    });
+}
+filterWorks()
