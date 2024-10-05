@@ -25,7 +25,7 @@ async function loginUser() {
                 //Récupérer le token 
                 const dataToken = dataUser.token 
                 //Enregistrer dans le localstorage 
-                window.localStorage.setItem("token","dataToken")
+                window.localStorage.setItem("token",dataToken)
                 //Redirection vers la page d'acceuil
                 window.location.href = "../index.html"
             }else{

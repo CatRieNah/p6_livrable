@@ -1,5 +1,5 @@
 //Récupération des travaux depuis le back-end 
-async function getWorks(){
+export async function getWorks(){
     try {
         //appel fetch pour récupérer les données 
         const response = await fetch("http://localhost:5678/api/works")
