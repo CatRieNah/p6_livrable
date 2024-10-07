@@ -1,7 +1,7 @@
 //Quand l(utilisateur est connecté)
+//Récupérer le token stocké dans localStorage 
+export const token = window.localStorage.getItem("token")
 function loginUser(){
-    //Récupérer le token stocké dans localStorage 
-    const token = window.localStorage.getItem("token")
     if(token){
         //Afficher la banner d'édition
         document.querySelector(".edit").style.display = "flex"

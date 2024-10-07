@@ -15,7 +15,7 @@ export async function getWorks(){
 }
 // Affichage des travaux via API 
 const gallery = document.querySelector("#portfolio .gallery")
-async function displayWorksInGallery() {
+export async function displayWorksInGallery() {
     const works = await getWorks()
     //Mis à jour de la gallery à chaque ajout de travaux 
     gallery.innerHTML = ""
@@ -24,8 +24,9 @@ async function displayWorksInGallery() {
         gallery.appendChild(figure)
     });
 }
-function createFigureGallery(work){
+export function createFigureGallery(work){
     const figure = document.createElement("figure")
+    figure.id = work.id
     const img = document.createElement("img")
     img.src = work.imageUrl
     img.alt = work.title
