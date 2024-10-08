@@ -40,7 +40,7 @@ displayWorksInGallery()
 
 //Réalisation du filtre pour chaque catégories 
 //Récupération les catégories via les données réçues
-async function getCategories() {
+/*async function getCategories() {
     const works = await getWorks()
     //Utilisation de set pour éviter les doublons pendant la récupération des catégories 
     const setCat = new Set()
@@ -62,6 +62,20 @@ async function getCategories() {
         })
     }
     return categories
+} LORSQU'ON SUPPRIME LES TRAVAUX, ÇA SUPPRIME AUSSI LES FILTRES VU QUE LES CATEGORIES SONT AJOUTÉES À PARTIR DES DONNÉES RÉCUES */
+export async function getCategories() {
+    try {
+        //appel fetch pour récupérer les données 
+        const response = await fetch("http://localhost:5678/api/categories")
+        if(response.status === 200){
+            const categories = await response.json()
+            return categories
+        }else{
+            throw new Error("Unexpected Error"+response.status)
+        }
+    } catch (error) {
+        console.error(error.message)
+    }
 }
 getCategories()
 // affichage des filtres 
@@ -77,7 +91,7 @@ function createFilterDefault(){
 }
 createFilterDefault()
 //Affichage des filtres 
-async function displayCategories() {
+export async function displayCategories() {
     const categories = await getCategories()
     categories.forEach(category => {
         const li = document.createElement("li")
